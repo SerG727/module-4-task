@@ -15,3 +15,25 @@ expect.extend({
     }
   }
 });
+
+expect.extend({
+  async toHaveTextContaining(received, expectedText) {
+    const elements = Array.isArray(received) ? received : [received];
+
+    for (const element of elements) {
+      const actualText = await element.getText();
+      if (!actualText.includes(expectedText)) {
+        return {
+          pass: false,
+          message: () =>
+            `Expected element text to contain "${expectedText}", but got "${actualText}"`,
+        };
+      }
+    }
+
+    return {
+      pass: true,
+      message: () => `All elements contain "${expectedText}"`,
+    };
+  },
+});

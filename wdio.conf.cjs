@@ -34,6 +34,9 @@ exports.config = {
         main: [
             './src/features/**/main-page.feature'
         ],
+        search: [
+            './src/features/**/search.feature'
+        ],
     },
     // Patterns to exclude.
     exclude: [
