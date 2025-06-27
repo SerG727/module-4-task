@@ -20,4 +20,10 @@ export default class LoginPage extends BasePage {
   async submit() {
     await this.loginButton.click();
   }
+
+  async logIn(email, password) {
+    await this.enterEmail(email);
+    await this.enterPassword(password);
+    await this.submit(); 
+  }
 }

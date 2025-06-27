@@ -37,3 +37,25 @@ expect.extend({
     };
   },
 });
+
+expect.extend({
+  async toHaveValues(received, expectedValue) {
+    const elements = Array.isArray(received) ? received : [received];
+
+    for (const element of elements) {
+      const actualValue = await element.getValue();
+      if (!actualValue.includes(expectedValue)) {
+        return {
+          pass: false,
+          message: () =>
+            `Expected element value to contain "${expectedValue}", but got "${actualValue}"`,
+        };
+      }
+    }
+
+    return {
+      pass: true,
+      message: () => `All element values contain "${expectedValue}"`,
+    };
+  },
+});

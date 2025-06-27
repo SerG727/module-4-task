@@ -37,6 +37,9 @@ exports.config = {
         search: [
             './src/features/**/search.feature'
         ],
+        account: [
+            './src/features/**/user-account.feature'
+        ],
     },
     // Patterns to exclude.
     exclude: [

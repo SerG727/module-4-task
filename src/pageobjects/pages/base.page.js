@@ -10,4 +10,8 @@ export default class BasePage {
   async open() {
     await browser.url(this.url);
   }
+
+  async getUrl() {
+    return this.url;
+  }
 }
