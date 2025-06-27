@@ -29,7 +29,10 @@ exports.config = {
             './src/features/**/login.feature'
         ],
         language: [
-            './src/features/**/language_selection.feature'
+            './src/features/**/language-selection.feature'
+        ],
+        main: [
+            './src/features/**/main-page.feature'
         ],
     },
     // Patterns to exclude.
@@ -222,8 +225,9 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function () {
+        require('./src/utils/expect-custom-matchers');
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name

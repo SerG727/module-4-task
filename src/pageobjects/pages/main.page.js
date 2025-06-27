@@ -1,4 +1,4 @@
-import { Sort, ProductList } from '../components';
+import { ProductList, SideFilters } from '../components';
 import BasePage from './base.page';
 
 export default class MainPage extends BasePage {
@@ -6,12 +6,6 @@ export default class MainPage extends BasePage {
     super();
   }
 
-  get sort() { return new Sort() }
+  get sideFilters() { return new SideFilters() }
   get productList() { return new ProductList() }
-
-  async sortBy(option) {
-    await this.sort.selectOption(option);
-  }
-
-
 }
