@@ -8,7 +8,6 @@ Given(/^the user is logged in$/, async () => {
     const expectedUrl = await pages('account').getUrl();
     return (await browser.getUrl()).includes(expectedUrl);
   }, {
-    timeout: 5000,
     timeoutMsg: 'Expected to be redirected to /account after login',
   });
 });

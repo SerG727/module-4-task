@@ -23,7 +23,9 @@ When(/^the user clicks on the Search button$/, async () => {
 Then(/^products should be displayed in descending order of price$/, async () => {
   const list = await pages('main').productList.rootElement;
   await list.waitUntil(async function () {
-    return (await this.getAttribute('data-test')) === 'sorting_completed' 
+    return (await this.getAttribute('data-test')) === 'sorting_completed'
+  }, {
+    timeoutMsg: 'Expected product list to have data-test="sorting_completed"', 
   });
   const pricesElements = await pages('main').productList.productPrices;
   const prices = await extractPrices(pricesElements);
@@ -31,14 +33,12 @@ Then(/^products should be displayed in descending order of price$/, async () => 
 });
 
 Then(/^the search results should display all product whose names contain (.+)$/, async (query) => {
-const searchResult = await pages('main').productList.rootElement;
-await searchResult.waitUntil(async function () {
-  return (await this.getAttribute('data-test')) === 'search_completed'
-}, {
-  timeout: 5000,
-  timeoutMsg: 'Expected search result to have data-test="search_completed"',
+  const searchResult = await pages('main').productList.rootElement;
+  await searchResult.waitUntil(async function () {
+    return (await this.getAttribute('data-test')) === 'search_completed'
+  }, {
+    timeoutMsg: 'Expected search result to have data-test="search_completed"',
 });
-
-const productNames = await pages('main').productList.productNames;
-await expect(productNames).toHaveTextContaining(query);
+  const productNames = await pages('main').productList.productNames;
+  await expect(productNames).toHaveTextContaining(query);
 });

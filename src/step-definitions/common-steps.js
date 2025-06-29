@@ -1,6 +1,5 @@
-import { Given, Then } from "@wdio/cucumber-framework";
+import { Given, Then } from '@wdio/cucumber-framework';
 import { pages } from '../pageobjects/pages';
-import * as utils from '../utils/common.js'
 
 Given(/^the user is on the (\w+) page$/, async (page) => {
   await pages(page).open();

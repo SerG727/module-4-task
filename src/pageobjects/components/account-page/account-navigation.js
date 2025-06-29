@@ -7,7 +7,7 @@ export default class AccountNavigation extends BaseComponent {
 
   get profileLink() { return this.rootElement.$('[data-test="nav-profile"]')}
 
-  async clickProfileLink() {
+  async openProfile() {
     await this.profileLink.click();
   }
 }

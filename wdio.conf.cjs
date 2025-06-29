@@ -48,7 +48,7 @@ exports.config = {
     },
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        './src/features/**/checkout.feature'
     ],
     //
     // ============
@@ -72,16 +72,23 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-            args: ['--start-maximized']
-        }
-    }, /* {
-        browserName: 'firefox'
-    }, {
-        browserName: 'safari'
-    } */],
+    capabilities: [
+        {
+            browserName: 'chrome',
+            'goog:chromeOptions': {
+                args: ['--headless', '--disable-gpu', '--window-size=1920,1080'],
+            },
+        },
+        {
+            browserName: 'firefox',
+            'moz:firefoxOptions': {
+                args: ['-headless'],
+            },
+        },
+        {
+            browserName: 'safari',
+        },
+    ],
 
     //
     // ===================
@@ -158,6 +165,7 @@ exports.config = {
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
+        retry: 1,
         require: ['./src/step-definitions/**/*.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,

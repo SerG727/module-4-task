@@ -11,7 +11,7 @@ export default class ProfilePage extends BasePage {
   get updateProfileButton() { return $('[data-test="update-profile-submit"]') }
   get successPopup() { return $('.alert-success') }
 
-  async updateProfileFields(firstName, lastName, phone) {
+  async updateProfileInfo(firstName, lastName, phone) {
     await this.firstNameField.clearValue();
     await this.firstNameField.setValue(firstName);
     await this.lastNameField.clearValue();
@@ -20,7 +20,7 @@ export default class ProfilePage extends BasePage {
     await this.phoneField.setValue(phone);
   }
 
-  async clickUpdateProfileButton() {
+  async updateProfile() {
     await this.updateProfileButton.click();
   }
 }

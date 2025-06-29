@@ -10,7 +10,7 @@ function pages(name) {
           main: new MainPage(),
           account: new AccountPage(),
           profile: new ProfilePage(),
-          pliers: new ProductDetails('product/01JYXNGHAPG2QCK7HPCDS212TS'),
+          pliers: new ProductDetails('product/01JYYA3QZB3SAGX485QNH968NX'),
      }
 
      return items[name.toLowerCase()];
