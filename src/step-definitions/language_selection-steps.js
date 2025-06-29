@@ -12,6 +12,7 @@ When(/^the user clicks on the language selector$/, async () => {
 });
 
 When(/^the user selects (\w+) language$/, async (language) => {
+  await pages('main').header.languageDropdown.waitForDisplayed();
   await pages('main').header.selectLanguage(language);
 });
 

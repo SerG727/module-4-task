@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 exports.config = {
     //
     // ====================
@@ -39,6 +41,9 @@ exports.config = {
         ],
         account: [
             './src/features/**/user-account.feature'
+        ],
+        pdp: [
+            './src/features/**/product-details.feature'
         ],
     },
     // Patterns to exclude.

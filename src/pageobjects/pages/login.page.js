@@ -7,7 +7,7 @@ export default class LoginPage extends BasePage {
 
   get emailAddressInput() { return $('#email') }
   get passwordInput() { return $('#password') }
-  get loginButton() { return $('input[aria-label="Login"]') }
+  get loginButton() { return $('[data-test="login-submit"]') }
 
   async enterEmail(email) {
     await this.emailAddressInput.setValue(email);

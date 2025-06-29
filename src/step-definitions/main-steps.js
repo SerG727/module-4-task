@@ -8,6 +8,8 @@ When(/^the user clicks on the Sort dropdown$/, async () => {
 
 When(/^the user selects the (.+) sort option$/, async (option) => {
   await pages('main').sideFilters.selectOption(option);
+  const selected = pages('main').sideFilters.sortDropdown.$(`//option[text()="${option}"]`);
+  await expect(selected).toBeSelected();
 });
 
 When(/^the user enters (.+) into the Search field$/, async (query) => {
@@ -19,7 +21,10 @@ When(/^the user clicks on the Search button$/, async () => {
 });
 
 Then(/^products should be displayed in descending order of price$/, async () => {
-  await browser.pause(1000);
+  const list = await pages('main').productList.rootElement;
+  await list.waitUntil(async function () {
+    return (await this.getAttribute('data-test')) === 'sorting_completed' 
+  });
   const pricesElements = await pages('main').productList.productPrices;
   const prices = await extractPrices(pricesElements);
   await expect(prices).toBeSortedDescending();

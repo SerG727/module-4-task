@@ -4,8 +4,14 @@ import * as utils from '../utils/common.js'
 
 Given(/^the user is on the (\w+) page$/, async (page) => {
   await pages(page).open();
+  await expect(browser).toHaveUrl(process.env.BASE_URL + pages(page).url);
+});
+
+Given(/^the user is logged out$/, async () => {
+  await pages('main').open();
+  await expect(pages('main').header.signInButton).toBeDisplayed();
 });
 
 Then(/^the user should be redirected to the (\w+) page$/, async (page) => {
-  await expect(browser).toHaveUrl(utils.getBaseUrl() + pages(page).url);
+  await expect(browser).toHaveUrl(process.env.BASE_URL + pages(page).url);
 });

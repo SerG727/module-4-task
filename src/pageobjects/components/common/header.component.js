@@ -8,6 +8,8 @@ export default class Header extends BaseComponent {
   get languageButton() { return this.rootElement.$('#language') }
   get languageDropdown() { return this.rootElement.$('#dropdown-animated') }
   get navigationLinks() { return this.rootElement.$$('a.nav-link') }
+  get cartButton() { return this.rootElement.$('[data-test="nav-cart"]') }
+  get signInButton() { return this.rootElement.$('[data-test="nav-sign-in"]') }
 
   async openLanguageDropdown() {
     await this.languageButton.click();
