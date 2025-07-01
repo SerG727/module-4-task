@@ -12,6 +12,9 @@ export default class ProfilePage extends BasePage {
   get successPopup() { return $('.alert-success') }
 
   async updateProfileInfo(firstName, lastName, phone) {
+    await browser.waitUntil(
+      async () => (await this.firstNameField.getValue()).trim().length > 0,
+    );
     await this.firstNameField.clearValue();
     await this.firstNameField.setValue(firstName);
     await this.lastNameField.clearValue();

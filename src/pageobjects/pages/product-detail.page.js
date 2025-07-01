@@ -1,6 +1,6 @@
 import BasePage from './base.page';
 
-export default class ProductDetails extends BasePage{
+export default class ProductPage extends BasePage{
   constructor(url) {
     super(url);
   }
@@ -10,6 +10,7 @@ export default class ProductDetails extends BasePage{
   get outOfStockMessage() { return $('[data-test="out-of-stock"]') }
   get successToast() { return $('.toast-success') }
   get errorToast() { return $('.toast-error') }
+  get productName() { return $('[data-test="product-name"]') }
 
   async addToCart() {
     await this.addToCartButton.click();

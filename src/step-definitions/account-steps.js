@@ -1,11 +1,11 @@
 import { Then, When } from '@wdio/cucumber-framework';
-import { pages } from '../pageobjects/pages';
-import * as testData from '../utils/test-data.js'  
+import { accountPage, profilePage } from '../pageobjects/pages';
+import { firstName, lastName, phoneNumber} from '../utils/user-data.json'  
 
 When(/^the user clicks on the Profile button$/, async () => {
-  await pages('account').accountNavigation.openProfile();
+  await accountPage.accountNavigation.openProfile();
   await browser.waitUntil(async function () {
-    const expectedUrl = await pages('profile').getUrl();
+    const expectedUrl = await profilePage.getUrl();
     return (await browser.getUrl()).includes(expectedUrl);
   }, {
     timeoutMsg: 'Expected to be redirected to /profile',
@@ -13,20 +13,19 @@ When(/^the user clicks on the Profile button$/, async () => {
 });
 
 When(/^the user updates First name, Last name, and Phone number$/, async () => {
-  await browser.pause(1500);
-  await pages('profile').updateProfileInfo(testData.profileInfo.firstName, testData.profileInfo.lastName, testData.profileInfo.phone);
+  await profilePage.updateProfileInfo(firstName, lastName, phoneNumber);
 });
 
 When(/^the user clicks on the Update Profile button$/, async () => {
-  await pages('profile').updateProfile();
+  await profilePage.updateProfile();
 });
 
 Then(/^the profile information should be updated$/, async () => {
-  await expect(pages('profile').firstNameField).toHaveValue(testData.profileInfo.firstName);
-  await expect(pages('profile').lastNameField).toHaveValue(testData.profileInfo.lastName);
-  await expect(pages('profile').phoneField).toHaveValue(testData.profileInfo.phone);
+  await expect(profilePage.firstNameField).toHaveValue(firstName);
+  await expect(profilePage.lastNameField).toHaveValue(lastName);
+  await expect(profilePage.phoneField).toHaveValue(phoneNumber);
 });
 
 Then(/^a success pop-up should appear confirming the profile was updated$/, async () => {
-  await expect(pages('profile').successPopup).toBeDisplayed();
+  await expect(profilePage.successPopup).toBeDisplayed();
 });

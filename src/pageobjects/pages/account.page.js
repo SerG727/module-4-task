@@ -7,4 +7,5 @@ export default class AccountPage extends BasePage {
   }
 
   get accountNavigation() { return new AccountNavigation() }
+  get pageTitle() { return $('[data-test="page-title"]') }
 }
