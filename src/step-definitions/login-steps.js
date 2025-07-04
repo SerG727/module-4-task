@@ -1,5 +1,6 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
 import { accountPage, loginPage } from '../pageobjects/pages';
+import { assert } from 'chai';
 
 Given(/^the user is logged in$/, async () => {
   await loginPage.open();
@@ -26,5 +27,6 @@ When(/^the user clicks on the Login button$/, async () => {
 
 Then(/^the user should be redirected to the Account page$/, async () => {
   await accountPage.pageTitle.waitForDisplayed();
-  await expect(browser).toHaveUrl(process.env.BASE_URL + accountPage.url);
+  const url = await browser.getUrl();
+  assert.equal(url, process.env.BASE_URL + accountPage.url);
 });
