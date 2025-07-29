@@ -1,0 +1,58 @@
+import js from "@eslint/js";
+import globals from "globals";
+import { defineConfig } from "eslint/config";
+import cucumber from 'eslint-plugin-cucumber';
+
+export default defineConfig([
+  {
+    name: 'General', 
+    files: ["**/*.{js,mjs,cjs}"], 
+    plugins: { js }, 
+    extends: ["js/recommended"], 
+    languageOptions: { 
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        browser: 'readonly',
+        $: 'readonly',
+        $$: 'readonly',
+        expect: 'readonly',
+      } 
+    },
+    rules: {
+      'no-undef': 'error',
+      'no-unused-vars': 'warn',
+    } 
+  },
+
+  {
+    name: 'WebdriverIO Config',
+    files: ['wdio.conf.*'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      'no-undef': 'error',
+      'no-unused-vars': 'off',
+    },
+  },
+
+  {
+    name: 'Cucumber',
+    basePath: './src/step-definitions',
+    files: ['**/*.js'],
+    plugins: { cucumber },
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      "cucumber/async-then": 2,
+      "cucumber/expression-type": [ "error", "RegExp" ],
+      "cucumber/no-arrow-functions": 'off'
+    },
+  },
+]);

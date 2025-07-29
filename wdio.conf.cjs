@@ -1,4 +1,7 @@
 require('dotenv').config();
+const { ReportAggregator } = require('wdio-html-nice-reporter');
+
+let reportAggregator;
 
 exports.config = {
     //
@@ -159,11 +162,18 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec',['allure', {
-        outputDir: 'allure-results',
-        disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: false,
-    }]],
+    reporters: ['spec',
+        ['html-nice', {
+            outputDir: './reports/html-reports/',
+            filename: 'report.html',
+            reportTitle: 'Test Report Title',
+            //to show the report in a browser when done
+            showInBrowser: false,
+            //to turn on screenshots after every test
+            useOnAfterCommandForScreenshot: false,
+            collapseTests: true
+        }]
+    ],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -208,8 +218,17 @@ exports.config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        reportAggregator = new ReportAggregator({
+            outputDir: './reports/html-reports/',
+            filename: 'master-report.html',
+            reportTitle: 'Master Report',
+            browserName: 'Chrome, Firefox, and Safari',
+            collapseTests: true
+        });
+
+        reportAggregator.clean()
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -351,8 +370,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: async function(exitCode, config, capabilities, results) {
+        await reportAggregator.createReport();
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
