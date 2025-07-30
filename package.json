@@ -32,7 +32,9 @@
     "wdio-html-nice-reporter": "^8.1.7"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "**/*.{js,json,md,ts,css}": "prettier --write"
+  "**/*.{js}": [
+    "eslint --cache --fix",
+    "prettier --write"
+  ]
   }
 }
