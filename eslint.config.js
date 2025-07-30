@@ -20,8 +20,8 @@ export default defineConfig([
       } 
     },
     rules: {
-      'no-undef': 'error',
       'no-unused-vars': 'warn',
+      'no-var': 'error',
     } 
   },
 
