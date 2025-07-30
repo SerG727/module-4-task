@@ -9,5 +9,6 @@ Given(/^the user is on the (\w+) page$/, async (page) => {
 
 Given(/^the user is logged out$/, async () => {
   await pages.mainPage.open();
+
   await expect(pages.mainPage.header.signInButton).toBeDisplayed();
 });
