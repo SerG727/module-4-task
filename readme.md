@@ -36,7 +36,3 @@ Run tests
 ```bash
 npm test
 ```
-Generate Allure report
-```bash
-npm report
-```
