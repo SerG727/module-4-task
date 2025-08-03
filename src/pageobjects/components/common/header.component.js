@@ -5,11 +5,21 @@ export default class Header extends BaseComponent {
     super('app-header');
   }
 
-  get languageButton() { return this.rootElement.$('#language') }
-  get languageDropdown() { return this.rootElement.$('#dropdown-animated') }
-  get navigationLinks() { return this.rootElement.$$('a.nav-link') }
-  get cartButton() { return this.rootElement.$('[data-test="nav-cart"]') }
-  get signInButton() { return this.rootElement.$('[data-test="nav-sign-in"]') }
+  get languageButton() {
+    return this.rootElement.$('#language');
+  }
+  get languageDropdown() {
+    return this.rootElement.$('#dropdown-animated');
+  }
+  get navigationLinks() {
+    return this.rootElement.$$('a.nav-link');
+  }
+  get cartButton() {
+    return this.rootElement.$('[data-test="nav-cart"]');
+  }
+  get signInButton() {
+    return this.rootElement.$('[data-test="nav-sign-in"]');
+  }
 
   async openLanguageDropdown() {
     await this.languageButton.click();
@@ -24,8 +34,10 @@ export default class Header extends BaseComponent {
       german: '[data-test="lang-de"]',
       dutch: '[data-test="lang-nl"]',
       turkish: '[data-test="lang-tr"]',
-    }
+    };
 
-    await this.languageDropdown.$(selectors[languageName.toLowerCase()]).click();
+    await this.languageDropdown
+      .$(selectors[languageName.toLowerCase()])
+      .click();
   }
 }

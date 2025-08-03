@@ -16,7 +16,10 @@ When(/^the user selects (\w+) language$/, async (language) => {
   await mainPage.header.selectLanguage(language);
 });
 
-Then(/^a language of the website should be changed to (\w+) language$/, async (language) => {
-  const links = await mainPage.header.navigationLinks;
-  await expect(links).toHaveText(getLinksExpectedText(language));
-});
+Then(
+  /^a language of the website should be changed to (\w+) language$/,
+  async (language) => {
+    const links = await mainPage.header.navigationLinks;
+    await expect(links).toHaveText(getLinksExpectedText(language));
+  }
+);

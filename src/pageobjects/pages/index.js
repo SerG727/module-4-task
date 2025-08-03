@@ -5,15 +5,9 @@ import ProfilePage from './profile.page';
 import ProductPage from './product-detail.page';
 
 const loginPage = new LoginPage(),
-      mainPage = new MainPage(),
-      accountPage = new AccountPage(),
-      profilePage = new ProfilePage(),
-      productPage = new ProductPage();
+  mainPage = new MainPage(),
+  accountPage = new AccountPage(),
+  profilePage = new ProfilePage(),
+  productPage = new ProductPage();
 
-export {
-  loginPage,
-  mainPage,
-  accountPage,
-  profilePage,
-  productPage
-};
+export { loginPage, mainPage, accountPage, profilePage, productPage };

@@ -6,6 +6,10 @@ export default class AccountPage extends BasePage {
     super('account');
   }
 
-  get accountNavigation() { return new AccountNavigation() }
-  get pageTitle() { return $('[data-test="page-title"]') }
+  get accountNavigation() {
+    return new AccountNavigation();
+  }
+  get pageTitle() {
+    return $('[data-test="page-title"]');
+  }
 }

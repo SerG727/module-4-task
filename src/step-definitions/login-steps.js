@@ -5,12 +5,15 @@ import { assert } from 'chai';
 Given(/^the user is logged in$/, async () => {
   await loginPage.open();
   await loginPage.logIn(process.env.EMAIL, process.env.PASSWORD);
-  await browser.waitUntil(async function () {
-    const expectedUrl = await accountPage.getUrl();
-    return (await browser.getUrl()).includes(expectedUrl);
-  }, {
-    timeoutMsg: 'Expected to be redirected to /account after login',
-  });
+  await browser.waitUntil(
+    async function () {
+      const expectedUrl = await accountPage.getUrl();
+      return (await browser.getUrl()).includes(expectedUrl);
+    },
+    {
+      timeoutMsg: 'Expected to be redirected to /account after login',
+    }
+  );
 });
 
 When(/^the user enters valid email into the Email address field$/, async () => {

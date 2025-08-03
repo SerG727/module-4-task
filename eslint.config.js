@@ -1,15 +1,15 @@
-import js from "@eslint/js";
-import globals from "globals";
-import { defineConfig } from "eslint/config";
+import js from '@eslint/js';
+import globals from 'globals';
+import { defineConfig } from 'eslint/config';
 import cucumber from 'eslint-plugin-cucumber';
 
 export default defineConfig([
   {
-    name: 'General', 
-    files: ["**/*.{js,mjs,cjs}"], 
-    plugins: { js }, 
-    extends: ["js/recommended"], 
-    languageOptions: { 
+    name: 'General',
+    files: ['src/**/*.{js,mjs,cjs}'],
+    plugins: { js },
+    extends: ['js/recommended'],
+    languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node,
@@ -17,12 +17,12 @@ export default defineConfig([
         $: 'readonly',
         $$: 'readonly',
         expect: 'readonly',
-      } 
+      },
     },
     rules: {
       'no-unused-vars': 'warn',
       'no-var': 'error',
-    } 
+    },
   },
 
   {
@@ -50,9 +50,9 @@ export default defineConfig([
       },
     },
     rules: {
-      "cucumber/async-then": 2,
-      "cucumber/expression-type": [ "error", "RegExp" ],
-      "cucumber/no-arrow-functions": 'off'
+      'cucumber/async-then': 2,
+      'cucumber/expression-type': ['error', 'RegExp'],
+      'cucumber/no-arrow-functions': 'off',
     },
   },
 ]);

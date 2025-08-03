@@ -26,13 +26,18 @@ Then(/^the product should be added to the shopping cart$/, async () => {
   expect(await button.isDisplayed()).to.be.true;
 });
 
-Then(/^a success pop-up should appear confirming the product was added to the shopping cart$/, async () => {
-  const toast = await productPage.successToast;
-  await toast.waitForDisplayed();
-  expect(await toast.isDisplayed()).to.be.true;
-  const message = await productPage.getSuccessToastMessage();
-  expect(await message.getText()).to.be.equal('Product added to shopping cart.');
-});
+Then(
+  /^a success pop-up should appear confirming the product was added to the shopping cart$/,
+  async () => {
+    const toast = await productPage.successToast;
+    await toast.waitForDisplayed();
+    expect(await toast.isDisplayed()).to.be.true;
+    const message = await productPage.getSuccessToastMessage();
+    expect(await message.getText()).to.be.equal(
+      'Product added to shopping cart.'
+    );
+  }
+);
 
 Then(/^the product should not be added to the favorites$/, async () => {
   const toast = await productPage.errorToast;
@@ -40,10 +45,15 @@ Then(/^the product should not be added to the favorites$/, async () => {
   expect(await toast.isDisplayed()).to.be.true;
 });
 
-Then(/^an error pop-up should appear stating that only logged-in users can add products to favorites$/, async () => {
-  const toast = await productPage.errorToast;
-  await toast.waitForDisplayed();
-  expect(await toast.isDisplayed()).to.be.true;
-  const message = await productPage.getErrorToastMessage();
-  expect(await message.getText()).to.be.equal('Unauthorized, can not add product to your favorite list.');
-});
+Then(
+  /^an error pop-up should appear stating that only logged-in users can add products to favorites$/,
+  async () => {
+    const toast = await productPage.errorToast;
+    await toast.waitForDisplayed();
+    expect(await toast.isDisplayed()).to.be.true;
+    const message = await productPage.getErrorToastMessage();
+    expect(await message.getText()).to.be.equal(
+      'Unauthorized, can not add product to your favorite list.'
+    );
+  }
+);

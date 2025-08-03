@@ -5,7 +5,9 @@ export default class BasePage {
     this.url = url;
   }
 
-  get header() { return new Header() }
+  get header() {
+    return new Header();
+  }
 
   async open() {
     await browser.url(this.url);

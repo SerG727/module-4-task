@@ -6,6 +6,10 @@ export default class MainPage extends BasePage {
     super();
   }
 
-  get sideFilters() { return new SideFilters() }
-  get productList() { return new ProductList() }
+  get sideFilters() {
+    return new SideFilters();
+  }
+  get productList() {
+    return new ProductList();
+  }
 }

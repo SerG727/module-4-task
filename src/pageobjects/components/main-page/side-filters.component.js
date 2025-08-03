@@ -5,10 +5,16 @@ export default class SideFilters extends BaseComponent {
     super('#filters');
   }
 
-  get sortDropdown() { return this.rootElement.$('select[aria-label="sort"]') }
-  get searchInputBox() { return this.rootElement.$('#search-query') }
-  get submitSearchButton() { return this.rootElement.$('[data-test="search-submit"]') }
-  
+  get sortDropdown() {
+    return this.rootElement.$('select[aria-label="sort"]');
+  }
+  get searchInputBox() {
+    return this.rootElement.$('#search-query');
+  }
+  get submitSearchButton() {
+    return this.rootElement.$('[data-test="search-submit"]');
+  }
+
   async openSortDropdown() {
     await this.sortDropdown.click();
   }

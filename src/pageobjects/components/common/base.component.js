@@ -3,5 +3,7 @@ export default class BaseComponent {
     this._rootElement = rootElement;
   }
 
-  get rootElement() { return $(this._rootElement) }
+  get rootElement() {
+    return $(this._rootElement);
+  }
 }

@@ -5,9 +5,15 @@ export default class LoginPage extends BasePage {
     super('auth/login');
   }
 
-  get emailAddressInput() { return $('#email') }
-  get passwordInput() { return $('#password') }
-  get loginButton() { return $('[data-test="login-submit"]') }
+  get emailAddressInput() {
+    return $('#email');
+  }
+  get passwordInput() {
+    return $('#password');
+  }
+  get loginButton() {
+    return $('[data-test="login-submit"]');
+  }
 
   async enterEmail(email) {
     await this.emailAddressInput.setValue(email);
@@ -24,6 +30,6 @@ export default class LoginPage extends BasePage {
   async logIn(email, password) {
     await this.enterEmail(email);
     await this.enterPassword(password);
-    await this.submit(); 
+    await this.submit();
   }
 }

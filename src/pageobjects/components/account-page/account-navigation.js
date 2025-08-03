@@ -5,7 +5,9 @@ export default class AccountNavigation extends BaseComponent {
     super('.btn-group-vertical');
   }
 
-  get profileLink() { return this.rootElement.$('[data-test="nav-profile"]')}
+  get profileLink() {
+    return this.rootElement.$('[data-test="nav-profile"]');
+  }
 
   async openProfile() {
     await this.profileLink.click();
