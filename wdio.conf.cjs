@@ -86,10 +86,7 @@ exports.config = {
             'moz:firefoxOptions': {
                 args: ['-headless'],
             },
-        },
-        {
-            browserName: 'safari',
-        },
+        }
     ],
 
     //
@@ -223,7 +220,7 @@ exports.config = {
             outputDir: './reports/html-reports/',
             filename: 'master-report.html',
             reportTitle: 'Master Report',
-            browserName: 'Chrome, Firefox, and Safari',
+            browserName: 'Chrome, Firefox',
             collapseTests: true
         });
 

@@ -26,20 +26,6 @@ export default defineConfig([
   },
 
   {
-    name: 'WebdriverIO Config',
-    files: ['wdio.conf.*'],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-      },
-    },
-    rules: {
-      'no-undef': 'error',
-      'no-unused-vars': 'off',
-    },
-  },
-
-  {
     name: 'Cucumber',
     basePath: './src/step-definitions',
     files: ['**/*.js'],
