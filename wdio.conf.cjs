@@ -175,7 +175,7 @@ exports.config = {
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        retry: 1,
+        retry: 2,
         require: ['./src/step-definitions/**/*.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,
