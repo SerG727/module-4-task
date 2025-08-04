@@ -1,5 +1,7 @@
 require('dotenv').config();
 const { ReportAggregator } = require('wdio-html-nice-reporter');
+const fs = require('fs');
+const path = require('path');
 
 let reportAggregator;
 
@@ -105,13 +107,18 @@ exports.config = {
         await reportAggregator.createReport();
     },
     afterTest: function (
-        test, 
-        context,
-        { error, result, duration, passed, retries }
+        step,
+        scenario,
+        result,
+        context
     ) {
-    // take a screenshot anytime a test fails and throws an error
-    if (error) {
-      browser.takeScreenshot();
-    }
-  },
+        if (!result.passed) {
+            const filename = `${scenario.pickle.name.replace(/\s+/g, '_')}.png`;
+            const filepath = path.resolve('./reports/html-reports/screenshots/', filename);
+
+            const screenshot = browser.takeScreenshot();
+            fs.mkdirSync(path.dirname(filepath), { recursive: true });
+            fs.writeFileSync(filepath, screenshot, 'base64');
+        }
+    },
 }
