@@ -2,6 +2,7 @@ require('dotenv').config();
 const { ReportAggregator } = require('wdio-html-nice-reporter');
 const fs = require('fs');
 const path = require('path');
+const { AfterStep } = require('@wdio/cucumber-framework');
 
 let reportAggregator;
 
@@ -106,19 +107,18 @@ exports.config = {
     onComplete: async function(exitCode, config, capabilities, results) {
         await reportAggregator.createReport();
     },
-    afterTest: function (
+    afterStep: async function (
         step,
         scenario,
         result,
         context
     ) {
         if (!result.passed) {
-            const filename = `${scenario.pickle.name.replace(/\s+/g, '_')}.png`;
-            const filepath = path.resolve('./reports/html-reports/screenshots/', filename);
+            const browserName = browser.capabilities.browserName.toLowerCase();
+            const stepName = `${step.text.replace(/\s+/g, '_')}`;
+            const fileName = `${browserName}_${stepName}.png`;
 
-            const screenshot = browser.takeScreenshot();
-            fs.mkdirSync(path.dirname(filepath), { recursive: true });
-            fs.writeFileSync(filepath, screenshot, 'base64');
+            await browser.saveScreenshot(`./reports/html-reports/screenshots/${fileName}`);
         }
     },
 }
