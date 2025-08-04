@@ -1,8 +1,5 @@
 require('dotenv').config();
 const { ReportAggregator } = require('wdio-html-nice-reporter');
-const fs = require('fs');
-const path = require('path');
-const { AfterStep } = require('@wdio/cucumber-framework');
 
 let reportAggregator;
 
@@ -43,7 +40,6 @@ exports.config = {
                     '--headless', 
                     '--disable-gpu', 
                     '--window-size=1920,1080',
-                    '--no-sandbox', 
                     '--disable-dev-shm-usage'],
             },
         },
