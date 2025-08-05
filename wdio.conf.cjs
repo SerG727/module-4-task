@@ -37,6 +37,8 @@ exports.config = {
             browserName: 'chrome',
             'goog:chromeOptions': {
                 args: [ 
+                    '--headless', 
+                    '--disable-gpu', 
                     '--window-size=1920,1080',
                     '--disable-dev-shm-usage'],
             },
