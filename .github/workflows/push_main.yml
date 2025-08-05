@@ -30,6 +30,11 @@ jobs:
       - name: Run Prettier  
         run: npm run format
 
+      - name: Start Xvfb
+        run: |
+          export DISPLAY=':99.0'
+          Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
+          
       - name: Run tests
         run: npm run test
 
