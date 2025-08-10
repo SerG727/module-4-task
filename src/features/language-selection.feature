@@ -1,3 +1,4 @@
+@regression
 Feature: Language Selection
 
   Scenario Outline: A user should be able to change a language of the website

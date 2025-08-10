@@ -1,3 +1,4 @@
+@regression
 Feature: Main page
 
   Scenario: A user should be able to sort products by price from high to low

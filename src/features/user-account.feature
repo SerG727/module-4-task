@@ -1,3 +1,4 @@
+@regression
 Feature: User Account
 
   Scenario: A user should be able to update user's profile information

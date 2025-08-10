@@ -1,3 +1,4 @@
+@regression
 Feature: Product Details
 
   Scenario: A user should be able to add products to the shopping cart

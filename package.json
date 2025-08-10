@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio run wdio.conf.js",
+    "regression": "npx wdio run ./wdio.conf.js --cucumberOpts.tagExpression='@regression'",
     "lint": "npx eslint",
     "format:check": "npx prettier --check \"src/**/*.js\"",
     "format": "npx prettier --write \"src/**/*.js\"",

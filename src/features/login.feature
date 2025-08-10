@@ -1,3 +1,4 @@
+@regression
 Feature: User Login
 
   Scenario: A user should be able to log in with valid credentials

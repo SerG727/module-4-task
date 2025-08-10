@@ -1,3 +1,4 @@
+@regression
 Feature: Search
 
   Scenario: A user should be able to search for a product using the product name
